@@ -19,9 +19,12 @@ info "** Starting keycloak **"
 # Use only basename
 conf_file="${KEYCLOAK_CONF_DIR}/${KEYCLOAK_CONF_FILE}"
 
-is_boolean_yes "$KEYCLOAK_PRODUCTION" && start_param="start --auto-build" || start_param="start-dev"
+is_boolean_yes "$KEYCLOAK_PRODUCTION" && start_param="start" || start_param="start-dev"
 
 start_command=("${KEYCLOAK_BIN_DIR}/kc.sh" "-cf" "$conf_file" "$start_param")
+
+# Run keycloak server with auto-build parameter
+is_boolean_yes "$AUTO_BUILD" && start_command+=("--auto-build")
 
 # Add extra args
 if [[ -n "$KEYCLOAK_EXTRA_ARGS" ]]; then

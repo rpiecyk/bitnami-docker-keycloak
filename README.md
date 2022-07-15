@@ -183,6 +183,12 @@ volumes:
 
 The Bitnami Keycloak container can activate different set of statistics (database, jgroups and http) by setting the environment variable `KEYCLOAK_ENABLE_STATISTICS=true`.
 
+### Running Keycloak with auto-build
+
+In case you want to trigger build on each config change use following environment variable:
+
+- `AUTO_BUILD`: Enable auto-build when running `kc.sh`. Default: **false**.
+
 #### Full configuration
 
 The image looks for configuration files in the `/bitnami/keycloak/configuration/` directory, this directory can be changed by setting the KEYCLOAK_MOUNTED_CONF_DIR environment variable.
